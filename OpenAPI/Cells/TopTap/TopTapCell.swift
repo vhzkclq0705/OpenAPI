@@ -11,6 +11,7 @@ class TopTapCell: UITableViewCell {
     
     // MARK: - UI
 
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Property
@@ -34,6 +35,9 @@ class TopTapCell: UITableViewCell {
     // MARK: - Setup
     
     func configureCell() {
+        topView.layer.cornerRadius = 12
+        topView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -76,16 +80,12 @@ extension TopTapCell: UICollectionViewDelegate,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath)
     -> CGSize {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "TopTapCell",
-            for: indexPath) as? TopTapCollectionViewCell else { return .zero }
+        let label = UILabel()
         
-        cell.titleLabel.text = titles[indexPath.item]
-        cell.titleLabel.sizeToFit()
+        label.text = titles[indexPath.item]
+        label.sizeToFit()
         
-        let cellWidth = cell.titleLabel.frame.width + 20
-        
-        return CGSize(width: cellWidth, height: 30)
+        return CGSize(width: label.frame.width + 15, height: 30)
     }
     
 }
