@@ -51,8 +51,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BeO-zd-lQA">
                                                 <rect key="frame" x="0.0" y="150" width="414" height="1100"/>
                                                 <subviews>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FJP-le-ssW">
-                                                        <rect key="frame" x="0.0" y="50" width="414" height="1050"/>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FJP-le-ssW">
+                                                        <rect key="frame" x="0.0" y="20" width="414" height="1080"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableView>
                                                 </subviews>
@@ -61,7 +61,7 @@
                                                     <constraint firstItem="FJP-le-ssW" firstAttribute="leading" secondItem="BeO-zd-lQA" secondAttribute="leading" id="MiQ-uQ-njR"/>
                                                     <constraint firstAttribute="trailing" secondItem="FJP-le-ssW" secondAttribute="trailing" id="bZz-rb-AtZ"/>
                                                     <constraint firstAttribute="bottom" secondItem="FJP-le-ssW" secondAttribute="bottom" id="hxC-LS-798"/>
-                                                    <constraint firstItem="FJP-le-ssW" firstAttribute="top" secondItem="BeO-zd-lQA" secondAttribute="top" constant="50" id="kWF-hI-NCr"/>
+                                                    <constraint firstItem="FJP-le-ssW" firstAttribute="top" secondItem="BeO-zd-lQA" secondAttribute="top" constant="20" id="kWF-hI-NCr"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hak-Ga-o25">

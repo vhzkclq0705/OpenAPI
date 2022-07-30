@@ -33,10 +33,10 @@ class API {
         _ today: String,
         completion: @escaping ([Movie]) -> Void)
     {
-        networking(urlStr: Address.movies.url + today, model: ResponseMovies.self) { response in
+        networking(urlStr: Address.movies.url + today, model: ResponseBoxOffice.self) { response in
             switch response {
             case .success(let result):
-                completion(result.movies)
+                completion(result.boxOfficeResult.movies)
             case .failure(let error):
                 print(error)
             }
@@ -47,10 +47,10 @@ class API {
         _ code: String,
         completion: @escaping (Detail) -> Void)
     {
-        networking(urlStr: Address.detail.url + code, model: ResponseDetail.self) { response in
+        networking(urlStr: Address.detail.url + code, model: ResponseMovieInfo.self) { response in
             switch response {
             case .success(let result):
-                completion(result.detail)
+                completion(result.movieInfoResult.detail)
             case .failure(let error):
                 print(error)
             }

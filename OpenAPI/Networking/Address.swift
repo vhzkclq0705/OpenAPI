@@ -7,7 +7,7 @@
 
 import Foundation
 
-fileprivate let baseURL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/"
+fileprivate let baseURL = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/"
 
 fileprivate let key = "35a767dc1f8d7b8c71f0e15983a973fa"
 

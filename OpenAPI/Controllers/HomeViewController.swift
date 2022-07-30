@@ -40,12 +40,24 @@ class HomeViewController: BaseViewController {
     func configureViewController() {
         collectionView.delegate = self
         collectionView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         
         let nib = UINib(nibName: "TopCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "TopCell")
         
+        registerTableViewCells()
+        
         midView.layer.cornerRadius = 15
         midView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
+    func registerTableViewCells() {
+        let tapNib = UINib(nibName: "TopTapCell", bundle: nil)
+        let movieNib = UINib(nibName: "MovieCell", bundle: nil)
+        
+        tableView.register(tapNib, forCellReuseIdentifier: "TopTapCell")
+        tableView.register(movieNib, forCellReuseIdentifier: "MovieCell")
     }
     
 }
@@ -87,5 +99,42 @@ extension HomeViewController: UICollectionViewDelegate,
         let width = (collectionView.frame.width - 15 * 4) / 5
         let height = collectionView.frame.height - 40
         return CGSize(width: width, height: height)
+    }
+}
+
+// MARK: - TableView
+
+extension HomeViewController: UITableViewDelegate,
+                              UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "TopTapCell") as? TopTapCell else {
+                return UITableViewCell()
+            }
+            
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "MovieCell") as? MovieCell else {
+                return UITableViewCell()
+            }
+            cell.selectionStyle = .none
+            
+            return cell
+        default: break
+        }
+        
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
