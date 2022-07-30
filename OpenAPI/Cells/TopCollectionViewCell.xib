@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TopCell" id="gTV-IL-0wX" customClass="TopCollectionViewCell" customModule="OpenAPI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event1" translatesAutoresizingMaskIntoConstraints="NO" id="ExV-bP-kgc">
+                        <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QqL-2D-bgb">
+                        <rect key="frame" x="38" y="134" width="34.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ExV-bP-kgc" secondAttribute="trailing" id="9dd-bo-5my"/>
+                <constraint firstItem="ExV-bP-kgc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dfM-th-Ka7"/>
+                <constraint firstItem="ExV-bP-kgc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="kHX-nf-XFp"/>
+                <constraint firstAttribute="bottom" secondItem="ExV-bP-kgc" secondAttribute="bottom" id="nYF-NZ-E4d"/>
+                <constraint firstItem="QqL-2D-bgb" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="rZO-Kk-ECS"/>
+                <constraint firstAttribute="bottom" secondItem="QqL-2D-bgb" secondAttribute="bottom" constant="10" id="raP-oJ-qy9"/>
+            </constraints>
+            <size key="customSize" width="110" height="160"/>
+            <connections>
+                <outlet property="imageView" destination="ExV-bP-kgc" id="LIC-oG-dIh"/>
+                <outlet property="label" destination="QqL-2D-bgb" id="p9T-fa-zfg"/>
+            </connections>
+            <point key="canvasLocation" x="175.36231884057972" y="149.33035714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="event1" width="243" height="243"/>
+    </resources>
+</document>

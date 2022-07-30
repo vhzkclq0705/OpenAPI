@@ -1,8 +1,0 @@
-//
-//  Key.swift
-//  OpenAPI
-//
-//  Created by 권오준 on 2022/07/28.
-//
-
-import Foundation

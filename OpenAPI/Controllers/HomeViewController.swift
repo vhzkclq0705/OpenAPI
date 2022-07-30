@@ -7,56 +7,85 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
-
+class HomeViewController: BaseViewController {
+    
+    // MARK: - UI
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var midView: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Property
+    
+    let topItems = [
+        "O.T",
+        "개봉러쉬",
+        "돌비시네마",
+        "오티북",
+        "제휴/할인",
+        "카카오페이",
+        "포인트몰",
+        "신규/휴면"
+    ]
     
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar()
+        configureViewController()
     }
-
     
     // MARK: - Setup
     
-    func configureNavigationBar() {
-        let imageView = UIImageView(image: UIImage(named: "topLogo"))
-        imageView.contentMode = .scaleAspectFit
+    func configureViewController() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
-        self.navigationItem.titleView = imageView
+        let nib = UINib(nibName: "TopCollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: "TopCell")
         
-        let feedButton: UIButton = {
-            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 65, height: 30))
-            
-            var config = UIButton.Configuration.plain()
-            config.background.image = UIImage(named: "feed")
-            
-            button.configuration = config
-            
-            return button
-        }()
-        
-        let menuButton: UIButton = {
-            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-            
-            var config = UIButton.Configuration.plain()
-            config.background.image = UIImage(named: "menu")
-            
-            button.configuration = config
-            
-            return button
-        }()
-     
-        self.navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(customView: menuButton),
-            UIBarButtonItem(customView: feedButton)
-        ]
-        
+        midView.layer.cornerRadius = 15
+        midView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
-    
-    // MARK: - Action
-    
     
 }
 
+// MARK: - CollectionView
+
+extension HomeViewController: UICollectionViewDelegate,
+                              UICollectionViewDataSource,
+                              UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int)
+    -> Int {
+        return topItems.count
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath)
+    -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "TopCell",
+            for: indexPath) as? TopCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        let index = indexPath.row
+        cell.updateUI(title: topItems[index], index: index)
+        
+        return cell
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath)
+    -> CGSize {
+        let width = (collectionView.frame.width - 15 * 4) / 5
+        let height = collectionView.frame.height - 40
+        return CGSize(width: width, height: height)
+    }
+}
