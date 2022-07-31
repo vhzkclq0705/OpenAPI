@@ -18,8 +18,8 @@ struct Detail: Codable {
     
     enum CodingKeys: String, CodingKey {
         case name = "movieNm"
-        case type = "typeNm"
-        case genre = "genreNm"
+        case type = "showTypes"
+        case genre = "genres"
         case directors, actors, audits
     }
 }

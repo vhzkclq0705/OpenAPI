@@ -11,6 +11,7 @@ class DetailViewController: UIViewController {
 
     // MARK: - UI
     
+    @IBOutlet weak var sectionStackView: UIStackView!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var auditsLabel: UILabel!
@@ -41,10 +42,10 @@ class DetailViewController: UIViewController {
     // MARK: - Setup
     
     func configureViewController() {
-        self.navigationController?.navigationBar.backgroundColor = .clear
+        self.navigationController?.isNavigationBarHidden = true
         
         thumbnailImageView.image = UIImage(named: data!.code)
-        rankLabel.text = "\(data!.rank)위  "
+        rankLabel.text = "\(data!.rank + 1)위  "
         openLabel.text = data!.openDt
     }
     
