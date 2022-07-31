@@ -16,6 +16,7 @@ class MovieCell: UITableViewCell {
     // MARK: - Property
     
     var movies = [Movie]()
+    var movieTapHandler: ((SendData) -> Void)?
     
     // MARK: - Life cycle
     
@@ -84,6 +85,22 @@ extension MovieCell: UICollectionViewDelegate,
         cell.updateCell(movie: movies[index], index: index)
         
         return cell
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath)
+    {
+        let movie = movies[indexPath.row]
+        let data = SendData(
+            rank: indexPath.row,
+            code: movie.code,
+            openDt: movie.openDt,
+            audiCnt: movie.audiCnt,
+            audiChange: movie.audiChange,
+            audiAcc: movie.audiAcc)
+        
+        movieTapHandler?(data)
     }
     
     func collectionView(

@@ -14,9 +14,11 @@
 		7676AAF12895664C00826AFB /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7676AAEF2895664C00826AFB /* MovieCell.xib */; };
 		7676AAF528959F4200826AFB /* MovieFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7676AAF328959F4200826AFB /* MovieFeedCell.swift */; };
 		7676AAF628959F4200826AFB /* MovieFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7676AAF428959F4200826AFB /* MovieFeedCell.xib */; };
-		7676AAF82895A14300826AFB /* HomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7676AAF72895A14300826AFB /* HomViewController.swift */; };
+		7676AAF82895A14300826AFB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7676AAF72895A14300826AFB /* HomeViewController.swift */; };
 		7676AAFB2895A1C100826AFB /* TopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7676AAF92895A1C100826AFB /* TopCell.swift */; };
 		7676AAFC2895A1C100826AFB /* TopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7676AAFA2895A1C100826AFB /* TopCell.xib */; };
+		7676AAFE2896909C00826AFB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7676AAFD2896909C00826AFB /* DetailViewController.swift */; };
+		7676AB00289699FE00826AFB /* SendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7676AAFF289699FE00826AFB /* SendData.swift */; };
 		767E41182892787600AFFFBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767E41172892787600AFFFBE /* AppDelegate.swift */; };
 		767E411A2892787600AFFFBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767E41192892787600AFFFBE /* SceneDelegate.swift */; };
 		767E411F2892787600AFFFBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767E411D2892787600AFFFBE /* Main.storyboard */; };
@@ -48,9 +50,11 @@
 		7676AAEF2895664C00826AFB /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		7676AAF328959F4200826AFB /* MovieFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFeedCell.swift; sourceTree = "<group>"; };
 		7676AAF428959F4200826AFB /* MovieFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieFeedCell.xib; sourceTree = "<group>"; };
-		7676AAF72895A14300826AFB /* HomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomViewController.swift; sourceTree = "<group>"; };
+		7676AAF72895A14300826AFB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7676AAF92895A1C100826AFB /* TopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCell.swift; sourceTree = "<group>"; };
 		7676AAFA2895A1C100826AFB /* TopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopCell.xib; sourceTree = "<group>"; };
+		7676AAFD2896909C00826AFB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		7676AAFF289699FE00826AFB /* SendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendData.swift; sourceTree = "<group>"; };
 		767E41142892787600AFFFBE /* OpenAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		767E41172892787600AFFFBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		767E41192892787600AFFFBE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,9 +168,10 @@
 			isa = PBXGroup;
 			children = (
 				767E41782895497000AFFFBE /* BaseViewController.swift */,
+				7676AAF72895A14300826AFB /* HomeViewController.swift */,
 				767E417A28954A0200AFFFBE /* MyViewController.swift */,
 				767E417C28954A0B00AFFFBE /* LoginViewController.swift */,
-				7676AAF72895A14300826AFB /* HomViewController.swift */,
+				7676AAFD2896909C00826AFB /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				767E417428953B9700AFFFBE /* ResponseDetail.swift */,
 				767E413428928E9D00AFFFBE /* Movie.swift */,
 				767E41702895380700AFFFBE /* Detail.swift */,
+				7676AAFF289699FE00826AFB /* SendData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -347,14 +353,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				767E41832895510600AFFFBE /* TopCollectionViewCell.swift in Sources */,
+				7676AB00289699FE00826AFB /* SendData.swift in Sources */,
 				7676AAF02895664C00826AFB /* MovieCell.swift in Sources */,
 				767E417D28954A0B00AFFFBE /* LoginViewController.swift in Sources */,
 				7676AAFB2895A1C100826AFB /* TopCell.swift in Sources */,
 				767E413528928E9D00AFFFBE /* Movie.swift in Sources */,
 				767E419328955A1100AFFFBE /* TopTapCollectionViewCell.swift in Sources */,
 				767E417528953B9700AFFFBE /* ResponseDetail.swift in Sources */,
+				7676AAFE2896909C00826AFB /* DetailViewController.swift in Sources */,
 				7676AAF528959F4200826AFB /* MovieFeedCell.swift in Sources */,
-				7676AAF82895A14300826AFB /* HomViewController.swift in Sources */,
+				7676AAF82895A14300826AFB /* HomeViewController.swift in Sources */,
 				767E41712895380700AFFFBE /* Detail.swift in Sources */,
 				767E41182892787600AFFFBE /* AppDelegate.swift in Sources */,
 				767E41892895592200AFFFBE /* TopTapCell.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  HomViewController.swift
+//  HomeViewController.swift
 //  OpenAPI
 //
 //  Created by 권오준 on 2022/07/31.
@@ -38,6 +38,18 @@ class HomeViewController: BaseViewController {
         tableView.register(tapNib, forCellReuseIdentifier: "TopTapCell")
         tableView.register(movieNib, forCellReuseIdentifier: "MovieCell")
     }
+    
+    // MARK: - Func
+    
+    func goToDetail(_ data: SendData) {
+        guard let vc = storyboard?.instantiateViewController(
+            withIdentifier: "DetailViewController") as? DetailViewController else {
+            return
+        }
+        vc.data = data
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
 }
 
@@ -70,7 +82,10 @@ extension HomeViewController: UITableViewDelegate,
                 withIdentifier: "MovieCell") as? MovieCell else {
                 return UITableViewCell()
             }
-            cell.selectionStyle = .none
+            
+            cell.movieTapHandler = { data in
+                self.goToDetail(data)
+            }
             
             return cell
         default: break

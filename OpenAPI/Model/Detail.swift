@@ -9,7 +9,6 @@ import Foundation
 
 struct Detail: Codable {
     let name: String
-    let open: String
     let type: [ShowType]
     let genre: [Genre]
     let directors: [Director]
@@ -19,7 +18,6 @@ struct Detail: Codable {
     
     enum CodingKeys: String, CodingKey {
         case name = "movieNm"
-        case open = "openDt"
         case type = "typeNm"
         case genre = "genreNm"
         case directors, actors, audits
