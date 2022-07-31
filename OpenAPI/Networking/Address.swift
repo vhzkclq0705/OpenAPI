@@ -20,7 +20,7 @@ enum Address {
         case .movies:
             return baseURL + "boxoffice/searchDailyBoxOfficeList.json?key=\(key)&targetDt="
         case .detail:
-            return baseURL + "/movie/searchMovieInfo.json?key=\(key)&movieCd="
+            return baseURL + "movie/searchMovieInfo.json?key=\(key)&movieCd="
         }
     }
 }

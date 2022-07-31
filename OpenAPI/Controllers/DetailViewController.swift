@@ -39,65 +39,112 @@ class DetailViewController: UIViewController {
         fetchDetail()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     // MARK: - Setup
     
     func configureViewController() {
         self.navigationController?.isNavigationBarHidden = true
         
         thumbnailImageView.image = UIImage(named: data!.code)
-        rankLabel.text = "\(data!.rank + 1)위  "
+        rankLabel.text = "\(data!.rank + 1)위(12.3%)  "
         openLabel.text = data!.openDt
+        audiCountLabel.text = formatAudiCnt(data!.audiCnt)
+        formatAudiChange(data!.audiChange)
+        audiAccLabel.text = formatAudiAcc(data!.audiAcc)
+        dateDiffLabel.text = calculateDateDiff(data!.openDt)
     }
     
     // MARK: - Func
 
     func fetchDetail() {
         API.searchingDetailMovie(data!.code) { detail in
-            self.titleLabel.text = detail.name
-            self.auditsLabel.text = detail.audits[0].audit
-            self.auditsSmallLabel.text = detail.audits[0].audit
-            self.typeLabel.text = self.formatTypes(detail.type)
-            self.genreLabel.text = self.formatGenres(detail.genre)
-            [self.auditsLabel, self.auditsSmallLabel]
-                .forEach { $0.text = self.formatAudits(detail.audits) }
-            self.directorLabel.text = self.formatDirectors(detail.directors)
-            self.actorsLabel.text = self.formatActors(detail.actors)
+            self.updateUI(detail)
         }
-
+    }
+    
+    func updateUI(_ detail: Detail) {
+        titleLabel.text = detail.name
+        auditsLabel.text = detail.audits[0].audit
+        auditsSmallLabel.text = detail.audits[0].audit
+        typeLabel.text = formatTypes(detail.type)
+        genreLabel.text = formatGenres(detail.genre)
+        [auditsLabel, auditsSmallLabel]
+            .forEach { $0.text = formatAudits(detail.audits) }
+        directorLabel.text = formatDirectors(detail.directors)
+        actorsLabel.text = formatActors(detail.actors)
+    }
+    
+    func formatToStringJoin(_ str: [String]) -> String {
+        return str.joined(separator: ", ")
     }
     
     func formatTypes(_ types: [ShowType]) -> String {
-        let typesStr = types.map { $0.type }
-        let stringJoin = typesStr.joined(separator: ", ")
-        
-        return stringJoin
+        return formatToStringJoin(types.map { $0.type })
     }
     
     func formatGenres(_ genres: [Genre]) -> String {
-        let genresStr = genres.map { $0.genre }
-        let stringJoin = genresStr.joined(separator: ", ")
-        
-        return stringJoin
+        return formatToStringJoin(genres.map { $0.genre })
     }
     
     func formatDirectors(_ directors: [Director]) -> String {
-        let directorsStr = directors.map { $0.director }
-        let stringJoin = directorsStr.joined(separator: ", ")
-        
-        return stringJoin
+        return formatToStringJoin(directors.map { $0.director })
     }
     
     func formatAudits(_ audits: [Audit]) -> String {
-        let auditsStr = audits.map { $0.audit }
-        let stringJoin = auditsStr.joined(separator: ", ")
-        
-        return stringJoin
+        return formatToStringJoin(audits.map { $0.audit })
     }
     
     func formatActors(_ actors: [Actor]) -> String {
-        let actorsStr = actors.map { $0.name }
-        let stringJoin = actorsStr.joined(separator: ", ")
-        
-        return stringJoin
+        return formatToStringJoin(actors.map { $0.name })
     }
+    
+    func formatAudiCnt(_ audiCnt: String) -> String {
+        let number = NSNumber(integerLiteral: Int(audiCnt)!)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        
+        return formatter.string(from: number)!
+    }
+    
+    func formatAudiChange(_ audiChange: String) {
+        let num = Float(audiChange)!
+        var text = String(format: "%.1f", num) + "%"
+        
+        if num < 0 {
+            text += " ▾"
+            audiChangeLabel.textColor = .blue
+        }
+        else if num > 0 {
+            text += " ▴"
+            audiChangeLabel.textColor = .red
+        } else {
+            audiChangeLabel.textColor = .lightGray
+        }
+        
+        audiChangeLabel.text = text
+    }
+    
+    func formatAudiAcc(_ audiAcc: String) -> String {
+        let num = Float(audiAcc)! / 10000
+        
+        return String(format: "%.1f 만", num)
+    }
+    
+    func calculateDateDiff(_ dateStr: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        let date = formatter.date(from: dateStr)!
+        let diff = Calendar.current.dateComponents([.day], from: date, to: Date())
+        
+        return "개봉 \(diff.day!)일차"
+    }
+    
+    @IBAction func didTapBackButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }

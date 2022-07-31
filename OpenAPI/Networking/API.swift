@@ -47,7 +47,6 @@ class API {
         _ code: String,
         completion: @escaping (Detail) -> Void)
     {
-        print(Address.detail.url + code)
         networking(urlStr: Address.detail.url + code, model: ResponseMovieInfo.self) { response in
             switch response {
             case .success(let result):

@@ -33,10 +33,12 @@ class HomeViewController: BaseViewController {
         let topNib = UINib(nibName: "TopCell", bundle: nil)
         let tapNib = UINib(nibName: "TopTapCell", bundle: nil)
         let movieNib = UINib(nibName: "MovieCell", bundle: nil)
+        let feedNib = UINib(nibName: "MovieFeedCell", bundle: nil)
         
         tableView.register(topNib, forCellReuseIdentifier: "TopCell")
         tableView.register(tapNib, forCellReuseIdentifier: "TopTapCell")
         tableView.register(movieNib, forCellReuseIdentifier: "MovieCell")
+        tableView.register(feedNib, forCellReuseIdentifier: "MovieFeedCell")
     }
     
     // MARK: - Func
@@ -59,7 +61,7 @@ extension HomeViewController: UITableViewDelegate,
                              UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,6 +87,13 @@ extension HomeViewController: UITableViewDelegate,
             
             cell.movieTapHandler = { data in
                 self.goToDetail(data)
+            }
+            
+            return cell
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "MovieFeedCell") as? MovieFeedCell else {
+                return UITableViewCell()
             }
             
             return cell
