@@ -21,10 +21,18 @@ class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBar()
         configureViewController()
     }
 
     // MARK: - Setup
+    
+    func configureNavigationBar() {
+        let imageView = UIImageView(image: UIImage(named: "topLogo"))
+        imageView.contentMode = .scaleAspectFit
+        
+        self.navigationItem.titleView = imageView
+    }
     
     func configureViewController() {
         tableView.delegate = self

@@ -15,11 +15,6 @@ class BaseViewController: UIViewController {
     }
     
     private func configureNavigationBar() {
-        let imageView = UIImageView(image: UIImage(named: "topLogo"))
-        imageView.contentMode = .scaleAspectFit
-        
-        self.navigationItem.titleView = imageView
-        
         let feedButton: UIButton = {
             let button = UIButton(frame: CGRect(x: 0, y: 0, width: 65, height: 30))
             
